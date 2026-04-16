@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favcon/Farmcult_Favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farmcult</title>
+    <style>
+      #global-loader {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background-color: #F7F7F7;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.8s ease-in-out;
+      }
+      #global-loader img {
+        width: 320px;
+        margin-bottom: 30px;
+      }
+      .loader-progress-bg {
+        width: 360px; height: 12px;
+        background-color: transparent;
+        position: relative; overflow: hidden;
+      }
+      @keyframes fillProgress {
+        0% { width: 0%; }
+        100% { width: 100%; }
+      }
+      .loader-progress-bar {
+        position: absolute; left: 0; top: 0; bottom: 0;
+        background: linear-gradient(to right, #8DC83A 30%, rgba(141, 200, 58, 0) 100%);
+        animation: fillProgress 5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      }
+      @media (max-width: 768px) {
+        #global-loader img { width: 240px; }
+        .loader-progress-bg { width: 280px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="global-loader">
+      <img src="/icons/logotransparent.png" alt="Farmcult Logo" />
+      <div class="loader-progress-bg">
+        <div class="loader-progress-bar"></div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        const loader = document.getElementById('global-loader');
+        if (!loader) return;
+
+        let isHidden = false;
+        const hideLoader = () => {
+          if (isHidden) return;
+          isHidden = true;
+          loader.style.opacity = '0';
+          loader.style.pointerEvents = 'none';
+          setTimeout(() => {
+            if (loader.parentNode) loader.remove();
+          }, 800);
+        };
+
+        // Fallback max 5 seconds
+        setTimeout(hideLoader, 5000);
+
+        // Hide early if window loads gracefully
+        if (document.readyState === 'complete') {
+          hideLoader();
+        } else {
+          window.addEventListener('load', hideLoader);
+        }
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

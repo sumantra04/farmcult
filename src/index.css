@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #F7F7F7;
+  --text-primary: #343434;
+  --text-secondary: rgba(52, 52, 52, 0.8);
+  --accent: #8DC83A;
+  --border-color: #343434;
+}
+
+/* --- Global Resets & Typography --- */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar completely */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Lenis Smooth Scrolling Styles --- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* --- Prevent FOUC for GSAP animations (Home page only) --- */
+/* Note: Only add elements here if their GSAP animation uses autoAlpha/fromTo.
+   Elements using gsap.from() must NOT be listed here or they stay permanently hidden. */
+.nav-logo,
+.nav-link,
+.btn-outline,
+.hero-title,
+.hero-subtitle,
+.btn-filled,
+.hero-image-wrapper,
+.solutions-title,
+.solutions-desc,
+.solution-card {
+  opacity: 0;
+  visibility: hidden;
+}
