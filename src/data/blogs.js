@@ -19,7 +19,7 @@ const blogs = [
   },
   {
     id: "why-hydroponics-farms-fail",
-    title: "Why Hydrophonic Farms Fail",
+    title: "Why Hydroponics Farms Fail",
     description:
       "The real reason most commercial hydroponics projects struggle",
     date: "Jan 2025",
