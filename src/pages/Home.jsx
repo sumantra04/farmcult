@@ -57,28 +57,6 @@ const Home = () => {
         { y: 0, autoAlpha: 1, duration: durationVal, stagger: staggerVal, ease: 'power3.out', delay: 0.4 }
       );
 
-      // Hero image — 3rd beat, rises as the text settles
-      gsap.fromTo('.hero-image-wrapper',
-        { y: heroYVal, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, duration: isMobile ? 1 : 1.4, ease: 'power3.out', delay: 0.65 }
-      );
-
-      // Parallax Effect on Hero Image
-      // Scale down parallax on mobile or simplify it for better performance
-      if (!isMobile) {
-        gsap.to('.hero-bg-img', {
-          scrollTrigger: {
-            trigger: '.hero-container',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-          y: isTablet ? 100 : 150,
-          scale: 1.05,
-          ease: 'none', // FIX 2: Added ease: 'none' so the parallax doesn't lag behind the scrollbar
-        });
-      }
-
       // About Section Animations
       gsap.fromTo('.about-header-text, .about-header-link',
         { y: yVal, autoAlpha: 0 },
